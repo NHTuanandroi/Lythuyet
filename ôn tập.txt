@@ -1,0 +1,115 @@
+			Phân vùng nhớ: 5 phân vùng nhớ
+-stack
+-heap
+-bss
+-data
+-text.
+
+*Text:
+- Quyền truy cập chỉ read, chứa lệnh thực thi
+- chứa khai báo hằng số
+*Data:
+- Quyền truy cập read/write
+- chưa biến toàn cục hoặc biến static với giá trị khác 0
+- Được giải phóng khi kết thúc chương trình
+
+*Bss:
+- Quyền truy cập read/Write
+- chứa biến toàn cục or static với giá trị bằng 0 hoặc không khởi tạo giá trị
+- Giải phóng khi kết thúc chương trình
+
+*stack:
+- Quyền truy cập là read/write
+- được sử dụng cấp phát cho biến local, input parameter của hàm.
+- sẽ được giải phóng khi ra khỏi block code của hàm.
+- Quản lý bởi hệ điều hành
+
+*heap:
+- Quyền truy cập là read/write
+- Dùng để lưu trữ khi cấp phát động
+- Quản lý bởi lập trình viên
+- dùng xong nên giải phóng
+
+----------------------------------------------------------------------------		
+			Biến static
+*Biến static cục bộ
+
+- Khi 1 biến cục bộ được khai báo với từ khóa static,biến sẽ chỉ được
+    khởi tạo 1 lần duy nhất và tồn tại suốt thời gian chạy chương trình.
+- Giá trị của nó không bị mất đi ngay cả khi kết thúc hàm.
+- Biến cục bộ static chỉ có thể được gọi trong nội bộ hàm khởi tạo ra nó.
+- Mỗi lần hàm được gọi, giá trị của biến chính bằng giá trị tại lần gần nhất hàm được gọi.
+
+
+*Biến static toàn cục:
+-Biến static chỉ có giá trị trong file chưa nó, các file khác không thể truy cập đến biến static
+ trong file khác  
+
+---------------------------------------------------------------------------
+
+			Macro và function
+
+*Marco:
+- Là đoạn mã được định nghĩa bằng #define.
+- Được xử lí bởi quá trình tiền xử lí.
+- Macro đơn giản là thay thế đoạn code được khai báo marco vào bất cứ chỗ nào được khai báo
+
+*Function:
+- Được xử lý trong quá trình compiler
+- Cần phải được định nghĩa, khai báo và triển khai
+- Hàm bình thường phải gọi một function call,lưu địa chỉ của hàm vào stack pointer,
+  sau đó Sẽ trỏ con trỏ PC đến hàm được gọi, sau khi thực hiện xong nó sẽ vào stack pointe
+  để lấy địa chỉ đã lưu rồi thực hiện tiếp chương trình.
+
+So sánh macro và function:
++ Marco thường được sử dụng với các tác vụ đơn giản, trong khi đó function được sử dụng với các tác vụ dài và phức tạp hơn. 
++ Marco không có kiểu trả về, trong khi function có kiểu tra về. 
++ Marco được định nghĩa qua #define và không cần khai báo trước,
+  trong khi function phải khai báo định nghĩa và định nghĩa trước khi sử dụng 
++ Về tốc độ và kích thước thì thông thường marco sẽ nhanh hơn và nhỏ hơn function 
++ Marco có hạn chế về việc không được kiểm tra lỗi, không được phân biệt kiểu dữ liệu
+  sẽ dẫn đến cách lỗi không mong muốn khi sử dụng sai cách.
+
+--------------------------------------------------------------------------
+
+			Struct và Union
+
+*Union: là kiểu dữ liệu do người dùng tự định nghĩa.
+- Các member dùng chung 1 ô nhớ
+- Kích thước của union bằng kích thước của member lớn nhất
+- Thay đổi nội dung 1 member sẽ thay đổi nội dung của member khác vì dữ liệu sẽ bị ghi đè lên 1 vùng nhớ
+
+*Struct: cũng là kiểu dữ liệu do người dùng tự định nghĩa.
+- Các member được lưu trữ tại các vùng nhớ khác nhau
+- kích thước của struct bằng tổng kích thước của các member cộng thêm phần padding
+
+So sánh:
+-Struct: các member lưu trữ ở các vùng nhớ khác nhau, kích thước struct bằng tối thiểu tổng kích thước member
+-union: các member dùng chung 1 vùng nhớ, kích thước bằng member lớn nhất, thay đổi nội dung 1 member sẽ thay 
+ đổi nội dung member khác.
+
+--------------------------------------------------------------------------
+
+			Pointer
+*Con trỏ: con trỏ là 1 biến, nó lưu trữ địa chỉ của biến khác
+- khai báo int *ptr, dùng & để lấy địa chỉ, dùng * để lấy giá trị mà con trỏ trỏ tới
+
+Con trỏ NULL:
+- Khi khai báo nên gán giá trị cho con trỏ, nếu chưa dùng thì nên khai báo NULL POINTER.
+- Con trỏ NULL cho biết con trỏ không trỏ vào đâu cả, lưu địa chỉ 0x00000000. tức địa chỉ bộ nhớ 0
+
+Con trỏ Void:
+- là con trỏ chưa có kiểu trả về, có thể trỏ đến bất cứ kiểu biến nào.
+- chỉ có thể lưu địa chỉ, muốn lấy giá trị thì phải ép kiểu cho nó
+
+Con trỏ trỏ đến con trỏ:
+- là con trỏ dùng để lưu địa chỉ của con trỏ khác.
+
+Con trỏ hàm:
+-Con trỏ hàm là con trỏ được tạo ra để lưu trữ địa chỉ của một hàm trong bộ nhớ máy tính.
+-Chúng ta sử dụng con trỏ hàm để truy cập vào vị trí của hàm trong bộ nhớ, cũng như thực thi các lệnh của hàm.
+
+
+Con trỏ chỉ lưu địa chỉ nên kích thước của mọi con trỏ là như nhau. Kích thước này phụ thuộc vào môi trường hệ thống máy tính:
+- Môi trường Windows 32 bit: 4 bytes
+- Môi trường Windows 64 bit: 8 bytes
