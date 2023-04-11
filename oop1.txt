@@ -1,0 +1,25 @@
+tính trừu tượng và đóng gói
+
+------------------Tính trừu tượng----------------------------
+
+Abstraction (Tính trừu tượng) trong lập trình hướng đối tượng là một khả năng 
+mà chương trình có thể bỏ qua sự phức tạp bằng cách tập trung vào cốt lõi của thông 
+tin cần xử lý
+- ví dụ khi trừu tượng hóa 1 đối tượng được tạo ra dừ class con người,
+khi tạo ra đối tượng học sinh thì quan tâm đến tên, tuổi, giới tính, điểm
+còn khi tạo ra đối tượng nhân viên thì quan tâm đến tên, tuổi, vị trí làm việc, lương
+-Tùy theo yêu cầu chương trình mà mình trừu tượng theo hướng mình muốn, tập trung
+vào những thứ chương trình yêu cầu
+
+
+----------------Tính đóng gói--------------------------------
+
+Encapsulation (Tính đóng gói) trong lập trình hướng đối tượng có ý nghĩa không 
+cho phép người sử dụng các đối tượng thay đổi trạng thái nội tại của một đối tượng, 
+mà chỉ có phương thức nội tại của đối tượng có thể thay đổi chính nó.
+Điều đó có nghĩa, dữ liệu và thông tin sẽ được đóng gói lại, giúp các tác động bên 
+ngoài một đối tượng không thể làm thay đổi đối tượng đó, nên sẽ đảm bảo tính toàn 
+vẹn của đối tượng, cũng như giúp dấu đi các dữ liệu thông tin cần được che giấu.
+- Thường những thuộc tính của đối tượng thì private còn các phương thức thì public.
+- muốn truy cập thành phần private thì truy cập thông qua public setter, getter hoặc các phương thức khác
+-> Giúp bảo vệ data không bị truy cập một cách trái phép
